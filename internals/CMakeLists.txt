@@ -1,0 +1,2 @@
+add_conventional_executable_test(polyfill_test)
+target_link_libraries(polyfill_test PRIVATE polyfill_v1)
