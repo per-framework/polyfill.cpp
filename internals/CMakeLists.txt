@@ -1,1 +1,1 @@
-add_conventional_executable_tests(PRIVATE polyfill_v1)
+add_conventional_executable_tests(PRIVATE polyfill_v1 testing_v1 std_thread)
