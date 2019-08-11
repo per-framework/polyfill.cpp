@@ -2,5 +2,3 @@
 
 struct foo_t;
 using foo_t = std::remove_cvref_t<const foo_t &>;
-
-int main() { return 0; }

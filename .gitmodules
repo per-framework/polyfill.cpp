@@ -2,3 +2,7 @@
 	path = .cppsm
 	url = https://github.com/cppsm/cppsm-boilerplate.git
 	branch = master
+[submodule "equipment/testing.cpp/v1"]
+	path = equipment/testing.cpp/v1
+	url = https://github.com/per-framework/testing.cpp.git
+	branch = v1

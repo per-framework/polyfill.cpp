@@ -1,6 +1,10 @@
 #include "polyfill_v1/memory.hpp"
 
-static void memory_test() {
+#include "testing_v1/test.hpp"
+
+using namespace testing_v1;
+
+auto memory_test = test([]() {
   std::atomic<std::shared_ptr<int>> apd;
   std::atomic<std::shared_ptr<int>> ap(std::shared_ptr<int>(new int(1)));
 
@@ -24,9 +28,4 @@ static void memory_test() {
       &p2, p1, std::memory_order_seq_cst, std::memory_order_seq_cst);
   ap.compare_exchange_strong(
       &p1, p3, std::memory_order_seq_cst, std::memory_order_seq_cst);
-}
-
-int main() {
-  memory_test();
-  return 0;
-}
+});
