@@ -1,8 +1,6 @@
 #pragma once
 
 #include <atomic>
-#include <condition_variable>
-#include <mutex>
 
 #if __cplusplus <= 201703L
 

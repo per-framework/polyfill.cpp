@@ -1,5 +1,8 @@
 #include "polyfill_v1/atomic.hpp"
 
+#include <condition_variable>
+#include <mutex>
+
 namespace {
 
 struct signal_t {
