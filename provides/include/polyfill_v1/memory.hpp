@@ -18,6 +18,8 @@ public:
   atomic(const T &ptr) : m_ptr(atomic_load(&ptr)) {}
   atomic(const atomic &) = delete;
 
+  static constexpr bool is_always_lock_free = false;
+
   bool is_lock_free() const { return atomic_is_lock_free(&m_ptr); }
 
   T load() const { return atomic_load(&m_ptr); }

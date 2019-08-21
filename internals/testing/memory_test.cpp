@@ -8,6 +8,8 @@ auto memory_test = test([]() {
   std::atomic<std::shared_ptr<int>> apd;
   std::atomic<std::shared_ptr<int>> ap(std::shared_ptr<int>(new int(1)));
 
+  verify(std::atomic<std::shared_ptr<int>>::is_always_lock_free || true);
+
   std::shared_ptr<int> p1(new int(3));
   std::shared_ptr<int> p2(new int(4));
   std::shared_ptr<int> p3(ap);
