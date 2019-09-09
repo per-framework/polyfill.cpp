@@ -36,7 +36,7 @@ public:
   }
 
   const T &operator=(const T &desired) {
-    store(desired);
+    atomic_store(&m_ptr, desired);
     return desired;
   }
 
