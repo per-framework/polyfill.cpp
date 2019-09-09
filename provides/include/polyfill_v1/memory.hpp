@@ -26,7 +26,7 @@ public:
 
   T load(memory_order mo) const { return atomic_load_explicit(&m_ptr, mo); }
 
-  operator T() const { return load(); }
+  operator T() const { return atomic_load(&m_ptr); }
 
   void store(const T &desired) { atomic_store(&m_ptr, desired); }
 
