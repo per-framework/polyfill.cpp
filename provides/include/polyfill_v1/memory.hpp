@@ -34,9 +34,9 @@ public:
     atomic_store_explicit(&m_ptr, desired, mo);
   }
 
-  T operator=(const T &desired) {
+  const T &operator=(const T &desired) {
     store(desired);
-    return load();
+    return desired;
   }
 
   atomic &operator=(const atomic &) = delete;
