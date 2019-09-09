@@ -15,7 +15,8 @@ template <class Value> class atomic<shared_ptr<Value>> {
 
 public:
   atomic() {}
-  atomic(const T &ptr) : m_ptr(atomic_load(&ptr)) {}
+  atomic(const T &ptr) : m_ptr(ptr) {}
+  atomic(T &&ptr) : m_ptr(std::move(ptr)) {}
   atomic(const atomic &) = delete;
 
   static constexpr bool is_always_lock_free = false;
@@ -26,7 +27,7 @@ public:
 
   T load(memory_order mo) const { return atomic_load_explicit(&m_ptr, mo); }
 
-  operator T() const { return load(); }
+  operator T() const { return atomic_load(&m_ptr); }
 
   void store(const T &desired) { atomic_store(&m_ptr, desired); }
 
@@ -34,9 +35,9 @@ public:
     atomic_store_explicit(&m_ptr, desired, mo);
   }
 
-  T operator=(const T &desired) {
-    store(desired);
-    return load();
+  const T &operator=(const T &desired) {
+    atomic_store(&m_ptr, desired);
+    return desired;
   }
 
   atomic &operator=(const atomic &) = delete;
