@@ -15,7 +15,7 @@ template <class Value> class atomic<shared_ptr<Value>> {
 
 public:
   atomic() {}
-  atomic(const T &ptr) : m_ptr(atomic_load(&ptr)) {}
+  atomic(const T &ptr) : m_ptr(ptr) {}
   atomic(const atomic &) = delete;
 
   static constexpr bool is_always_lock_free = false;
