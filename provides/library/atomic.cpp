@@ -1,5 +1,7 @@
 #include "polyfill_v1/atomic.hpp"
 
+#if __cplusplus <= 201703L
+
 #include <condition_variable>
 #include <mutex>
 
@@ -45,3 +47,5 @@ void polyfill_v1::Private_Atomic::notify_all(const void *atomic) {
   std::unique_lock<std::mutex> guard(signal.m_mutex);
   signal.m_condition_variable.notify_all();
 }
+
+#endif
